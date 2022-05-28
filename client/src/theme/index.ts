@@ -9,8 +9,8 @@ export default {
     RED: '#ec775f',
   },
 
-  FONT_WEIGHT: {
-    REGULAR: '1.125rem 400, "DM Sans"',
-    BOLD: '1.125rem 700, "DM Sans"',
+  FONT: {
+    REGULAR: '400 1.125rem "DM Sans", sans-serif',
+    BOLD: '700 1.125rem "DM Sans", sans-serif',
   },
 };
