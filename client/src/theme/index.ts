@@ -3,7 +3,7 @@ export default {
     BROWN: '#93867b',
     CREAM: '#f8e9dd',
     DARK_BROWN: '#382314',
-    ORANGE: '#fffaf5',
+    PALE_ORANGE: '#fffaf5',
 
     CYAN: '#76b5bc',
     RED: '#ec775f',

@@ -1,5 +1,11 @@
+import { Header } from '../../components/Header';
+
 import { Container } from './styles';
 
 export function ExpensesChart() {
-  return <Container></Container>;
+  return (
+    <Container>
+      <Header />
+    </Container>
+  );
 }
