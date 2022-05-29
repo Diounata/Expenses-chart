@@ -16,6 +16,12 @@ const AmountChart = styled.div<{ percentage: number; isBiggestNumber: boolean }>
 
   border-radius: 3px;
   background-color: ${({ theme, isBiggestNumber }) => theme.COLORS[isBiggestNumber ? 'CYAN' : 'RED']};
+  
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `;
 
 const Title = styled.h3`
