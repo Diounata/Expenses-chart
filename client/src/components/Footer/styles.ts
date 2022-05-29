@@ -5,7 +5,7 @@ const Container = styled.footer`
   align-items: flex-end;
   justify-content: space-between;
 
-  padding-top: 0.75rem;
+  padding-top: 1.5rem;
 
   border-top: 2px solid ${({ theme }) => theme.COLORS.CREAM};
 `;
