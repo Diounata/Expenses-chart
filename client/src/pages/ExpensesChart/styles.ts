@@ -7,8 +7,8 @@ const Container = styled.div`
   gap: 1.125rem;
 
   width: 100vw;
-  height: 100vh;
-  padding: 0 1rem;
+  min-height: 100vh;
+  padding: 2rem 1rem;
 
   background-color: ${({ theme }) => theme.COLORS.CREAM};
 `;
