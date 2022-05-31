@@ -11,16 +11,26 @@ const Container = styled.article`
 `;
 
 const AmountChart = styled.div<{ percentage: number; isBiggestNumber: boolean }>`
+  display: flex;
+  justify-content: center;
+
+  position: relative;
+
   width: 7.5vw;
   height: ${({ percentage }) => percentage}%;
 
   border-radius: 3px;
-  background-color: ${({ theme, isBiggestNumber }) => theme.COLORS[isBiggestNumber ? 'CYAN' : 'RED']};
-  
+  background-color: rgb(
+    ${({ theme, isBiggestNumber }) => theme.COLORS[isBiggestNumber ? 'CYAN' : 'RED']}
+  );
+
   transition: opacity 0.2s;
 
   &:hover {
-    opacity: 0.7;
+    background-color: rgba(
+      ${({ theme, isBiggestNumber }) => theme.COLORS[isBiggestNumber ? 'CYAN' : 'RED']},
+      0.7
+    );
   }
 `;
 

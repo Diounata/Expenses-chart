@@ -9,7 +9,7 @@ const Container = styled.header`
   padding: 1.25rem;
 
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.COLORS.RED};
+  background-color: rgb(${({ theme }) => theme.COLORS.RED});
 `;
 
 const BalanceContainer = styled.section`

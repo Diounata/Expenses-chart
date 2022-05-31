@@ -1,4 +1,7 @@
 import { AmountChart, Container, Title } from './styles';
+import { useHover } from './useHover';
+
+import { AmountPopup } from './AmountPopup';
 
 interface Props {
   title: string;
@@ -6,9 +9,13 @@ interface Props {
 }
 
 export function Chart({ title, percentage }: Props) {
+  const { onHover, outHover } = useHover();
+
   return (
-    <Container>
-      <AmountChart percentage={percentage} isBiggestNumber={percentage === 80} />
+    <Container onMouseOver={onHover} onMouseOut={outHover}>
+      <AmountChart percentage={percentage} isBiggestNumber={percentage === 80}>
+        <AmountPopup amount={percentage} />
+      </AmountChart>
 
       <Title>{title}</Title>
     </Container>

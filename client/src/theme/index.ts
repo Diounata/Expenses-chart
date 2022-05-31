@@ -5,8 +5,8 @@ export default {
     DARK_BROWN: '#382314',
     PALE_ORANGE: '#fffaf5',
 
-    CYAN: '#76b5bc',
-    RED: '#ec775f',
+    CYAN: '118, 181, 188',
+    RED: '236, 119, 95',
   },
 
   FONT: {
