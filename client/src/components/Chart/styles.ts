@@ -32,6 +32,10 @@ const AmountChart = styled.div<{ percentage: number; isBiggestNumber: boolean }>
       0.7
     );
   }
+
+  @media (min-width: 600px) {
+    width: 80%;
+  }
 `;
 
 const Title = styled.h3`

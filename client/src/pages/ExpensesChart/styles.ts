@@ -8,9 +8,11 @@ const Container = styled.div`
 
   width: 100vw;
   min-height: 100vh;
-  padding: 2rem 1rem;
+  padding: 1rem;
 
-  background-color: ${({ theme }) => theme.COLORS.CREAM};
+  @media (min-width: 600px) {
+    width: 32.5rem;
+  }
 `;
 
 export { Container };
