@@ -8,13 +8,19 @@ import {
   TotalValue,
 } from './styles';
 
+import { Loading } from '../LoadingImg';
+
+import { useExpenses } from '../../contexts/ExpensesContext';
+
 export function Footer() {
+  const { amountTotal, isLoading, formatCurrency } = useExpenses();
+
   return (
     <Container>
       <TotalContainer>
         <TotalTitle>Total this month</TotalTitle>
 
-        <TotalValue>$478.33</TotalValue>
+        <TotalValue>${isLoading ? <Loading /> : formatCurrency(amountTotal)}</TotalValue>
       </TotalContainer>
 
       <LastMonthContainer>

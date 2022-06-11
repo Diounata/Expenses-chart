@@ -1,7 +1,7 @@
-import { Container, LoadingImg } from './styles';
+import { Container } from './styles';
 
 import { Chart } from '../Chart';
-import loadingSVG from '../../assets/loading.svg';
+import { Loading } from '../LoadingImg';
 
 import { useExpenses } from '../../contexts/ExpensesContext';
 
@@ -11,7 +11,7 @@ export function SpendingCharts() {
   return (
     <Container>
       {isLoading ? (
-        <LoadingImg src={loadingSVG} alt="Loading" width="25px" height="25px" />
+        <Loading />
       ) : (
         <>
           {expenses.map(expense => (
