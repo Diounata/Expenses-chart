@@ -15,7 +15,7 @@ export function classifyExpensesAmount(expensesArray: ExpensesProps[], amountTot
       lastHighestAmountId = Number(i);
     }
 
-    expenses[i].percentage = Number(((expenses[i].amount * 100) / amountTotal).toFixed(2));
+    expenses[i].percentage = Number(((expenses[i].amount * 300) / amountTotal).toFixed(2));
   }
 
   return expenses;

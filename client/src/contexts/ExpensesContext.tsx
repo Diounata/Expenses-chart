@@ -17,16 +17,23 @@ interface ChildrenProps {
 
 interface ContextProps {
   expenses: ExpensesProps[];
+  isLoading: boolean;
 }
 
 export function ExpensesProvider({ children }: ChildrenProps) {
   const [expenses, setExpenses] = useState<ExpensesProps[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get<ExpensesProps[]>('http://localhost:3001/expenses').then(res => setExpenses(res.data));
+    axios.get<ExpensesProps[]>('http://localhost:3001/expenses').then(res => {
+      setExpenses(res.data);
+      setIsLoading(false);
+    });
   }, []);
 
-  return <ExpensesContext.Provider value={{ expenses }}>{children}</ExpensesContext.Provider>;
+  return (
+    <ExpensesContext.Provider value={{ expenses, isLoading }}>{children}</ExpensesContext.Provider>
+  );
 }
 
 export function useExpenses() {

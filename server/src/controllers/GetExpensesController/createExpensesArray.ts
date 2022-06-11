@@ -15,7 +15,7 @@ export function createExpensesArray(): CreateExpensesProps {
 
   for (let i in weekday) {
     const id = uuid();
-    const amount = Number(random(30, 300).toFixed(2));
+    const amount = Number(random(20, 100).toFixed(2));
 
     amountTotal += amount;
     expenses.push({ id, day: weekday[i], amount, percentage: 0, isHighestAmount: false });
