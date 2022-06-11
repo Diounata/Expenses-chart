@@ -3,21 +3,30 @@ import { useHover } from './useHover';
 
 import { AmountPopup } from './AmountPopup';
 
-interface Props {
-  title: string;
+interface ExpenseProps {
+  id: string;
+  day: string;
+  amount: number;
   percentage: number;
+  isHighestAmount: boolean;
 }
 
-export function Chart({ title, percentage }: Props) {
+interface Props {
+  expense: ExpenseProps;
+}
+
+export function Chart({ expense }: Props) {
   const { onHover, outHover } = useHover();
+
+  const { day, amount, percentage, isHighestAmount } = expense;
 
   return (
     <Container onMouseOver={onHover} onMouseOut={outHover}>
-      <AmountChart percentage={percentage} isBiggestNumber={percentage === 80}>
-        <AmountPopup amount={percentage} />
+      <AmountChart percentage={percentage} isBiggestNumber={isHighestAmount}>
+        <AmountPopup amount={amount} />
       </AmountChart>
 
-      <Title>{title}</Title>
+      <Title>{day}</Title>
     </Container>
   );
 }

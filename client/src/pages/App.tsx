@@ -3,13 +3,16 @@ import { ThemeProvider } from 'styled-components';
 import THEME from '../theme';
 
 import { ExpensesChart } from './ExpensesChart';
+import { ExpensesProvider } from '../contexts/ExpensesContext';
 
 export default function App() {
   return (
     <ThemeProvider theme={THEME}>
-      <GlobalStyle />
+      <ExpensesProvider>
+        <GlobalStyle />
 
-      <ExpensesChart />
+        <ExpensesChart />
+      </ExpensesProvider>
     </ThemeProvider>
   );
 }

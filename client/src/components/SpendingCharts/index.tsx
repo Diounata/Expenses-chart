@@ -2,16 +2,16 @@ import { Container } from './styles';
 
 import { Chart } from '../Chart';
 
+import { useExpenses } from '../../contexts/ExpensesContext';
+
 export function SpendingCharts() {
+  const { expenses } = useExpenses();
+
   return (
     <Container>
-      <Chart title="mon" percentage={10} />
-      <Chart title="tue" percentage={30} />
-      <Chart title="wed" percentage={80} />
-      <Chart title="thu" percentage={45} />
-      <Chart title="fri" percentage={60} />
-      <Chart title="sat" percentage={52} />
-      <Chart title="sun" percentage={2} />
+      {expenses.map(expense => (
+        <Chart key={expense.id} expense={expense} />
+      ))}
     </Container>
   );
 }
