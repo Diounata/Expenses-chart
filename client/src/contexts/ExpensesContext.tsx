@@ -24,18 +24,12 @@ interface ContextProps {
   expenses: ExpensesProps[];
   amountTotal: number;
   isLoading: boolean;
-
-  formatCurrency(value: number): string;
 }
 
 export function ExpensesProvider({ children }: ChildrenProps) {
   const [expenses, setExpenses] = useState<ExpensesProps[]>([]);
   const [amountTotal, setAmountTotal] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-
-  function formatCurrency(value: number): string {
-    return value.toLocaleString();
-  }
 
   useEffect(() => {
     axios.get<ExpensesResponseProps>('http://localhost:3001/expenses').then(({ data }) => {
@@ -46,7 +40,7 @@ export function ExpensesProvider({ children }: ChildrenProps) {
   }, []);
 
   return (
-    <ExpensesContext.Provider value={{ expenses, amountTotal, isLoading, formatCurrency }}>
+    <ExpensesContext.Provider value={{ expenses, amountTotal, isLoading }}>
       {children}
     </ExpensesContext.Provider>
   );

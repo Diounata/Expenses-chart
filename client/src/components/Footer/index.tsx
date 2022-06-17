@@ -11,9 +11,10 @@ import {
 import { Loading } from '../LoadingImg';
 
 import { useExpenses } from '../../contexts/ExpensesContext';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export function Footer() {
-  const { amountTotal, isLoading, formatCurrency } = useExpenses();
+  const { amountTotal, isLoading } = useExpenses();
 
   return (
     <Container>

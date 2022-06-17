@@ -4,11 +4,9 @@ import axios from 'axios';
 
 import SVGLogo from '../../assets/logo.svg';
 
-import { useExpenses } from '../../contexts/ExpensesContext';
+import { formatCurrency } from '../../utils/formatCurrency';
 
 export function Header() {
-  const { formatCurrency } = useExpenses();
-
   const [balance, setBalance] = useState(0);
 
   useEffect(() => {
