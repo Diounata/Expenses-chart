@@ -5,13 +5,13 @@ import { classifyExpensesAmount } from './classifyExpensesAmount';
 
 export function GetExpansesController(req: Request, res: Response) {
   try {
-    const { expenses, amountTotal } = createExpensesArray();
+    const { expenses, totalAmount } = createExpensesArray();
 
-    const classifiedExpenses = classifyExpensesAmount(expenses, amountTotal);
+    const classifiedExpenses = classifyExpensesAmount(expenses, totalAmount);
 
     if (classifiedExpenses.length !== 7) throw 'Missing weekday expenses';
 
-    return res.status(200).json({ amountTotal, expenses: classifiedExpenses });
+    return res.status(200).json({ totalAmount, expenses: classifiedExpenses });
   } catch (error) {
     return res.status(500).json({ error });
   }

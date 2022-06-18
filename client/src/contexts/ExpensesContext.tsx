@@ -17,7 +17,7 @@ interface LastMonthPercentageResponse {
 
 interface ExpensesResponse {
   expenses: ExpensesProps[];
-  amountTotal: number;
+  totalAmount: number;
 }
 
 interface ChildrenProps {
@@ -26,14 +26,14 @@ interface ChildrenProps {
 
 interface ContextProps {
   expenses: ExpensesProps[];
-  amountTotal: number;
+  totalAmount: number;
   lastMonthPercentage: number;
   isLoading: boolean;
 }
 
 export function ExpensesProvider({ children }: ChildrenProps) {
   const [expenses, setExpenses] = useState<ExpensesProps[]>([]);
-  const [amountTotal, setAmountTotal] = useState(0);
+  const [totalAmount, setTotalAmount] = useState(0);
   const [lastMonthPercentage, setLastMonthPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -49,14 +49,14 @@ export function ExpensesProvider({ children }: ChildrenProps) {
       const lastMonthPercentageData = res[1].data;
 
       setExpenses(expensesData.expenses);
-      setAmountTotal(expensesData.amountTotal);
+      setTotalAmount(expensesData.totalAmount);
       setLastMonthPercentage(lastMonthPercentageData.lastMonthPercentage);
       setIsLoading(false);
     });
   }, []);
 
   return (
-    <ExpensesContext.Provider value={{ expenses, amountTotal, lastMonthPercentage, isLoading }}>
+    <ExpensesContext.Provider value={{ expenses, totalAmount, lastMonthPercentage, isLoading }}>
       {children}
     </ExpensesContext.Provider>
   );

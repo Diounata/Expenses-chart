@@ -14,14 +14,14 @@ import { useExpenses } from '../../contexts/ExpensesContext';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 export function Footer() {
-  const { amountTotal, lastMonthPercentage, isLoading } = useExpenses();
+  const { totalAmount, lastMonthPercentage, isLoading } = useExpenses();
 
   return (
     <Container>
       <TotalContainer>
         <TotalTitle>Total this month</TotalTitle>
 
-        <TotalValue>{isLoading ? <Loading /> : formatCurrency(amountTotal)}</TotalValue>
+        <TotalValue>{isLoading ? <Loading /> : formatCurrency(totalAmount)}</TotalValue>
       </TotalContainer>
 
       <LastMonthContainer>

@@ -4,22 +4,22 @@ import { ExpensesProps } from './ExpensesTypes';
 
 interface CreateExpensesProps {
   expenses: ExpensesProps[];
-  amountTotal: number;
+  totalAmount: number;
 }
 
 export function createExpensesArray(): CreateExpensesProps {
   const weekday = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
   const expenses: ExpensesProps[] = [];
 
-  let amountTotal = 0;
+  let totalAmount = 0;
 
   for (let i in weekday) {
     const id = uuid();
     const amount = Number(random(20, 100).toFixed(2));
 
-    amountTotal += amount;
+    totalAmount += amount;
     expenses.push({ id, day: weekday[i], amount, percentage: 0, isHighestAmount: false });
   }
 
-  return { expenses, amountTotal };
+  return { expenses, totalAmount };
 }
