@@ -8,7 +8,7 @@ import {
   TotalValue,
 } from './styles';
 
-import { Loading } from '../LoadingImg';
+import { Loading } from '../Loading';
 
 import { useExpenses } from '../../contexts/ExpensesContext';
 import { formatCurrency } from '../../utils/formatCurrency';

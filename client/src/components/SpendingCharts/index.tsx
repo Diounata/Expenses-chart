@@ -1,7 +1,7 @@
 import { Container } from './styles';
 
 import { Chart } from '../Chart';
-import { Loading } from '../LoadingImg';
+import { Loading } from '../Loading';
 
 import { useExpenses } from '../../contexts/ExpensesContext';
 
