@@ -21,7 +21,7 @@ export function Footer() {
       <TotalContainer>
         <TotalTitle>Total this month</TotalTitle>
 
-        <TotalValue>${isLoading ? <Loading /> : formatCurrency(amountTotal)}</TotalValue>
+        <TotalValue>{isLoading ? <Loading /> : formatCurrency(amountTotal)}</TotalValue>
       </TotalContainer>
 
       <LastMonthContainer>

@@ -1,5 +1,5 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
-import axios from 'axios';
+import { api } from '../utils/api';
 
 const ExpensesContext = createContext({} as ContextProps);
 
@@ -32,7 +32,7 @@ export function ExpensesProvider({ children }: ChildrenProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get<ExpensesResponseProps>('http://localhost:3001/expenses').then(({ data }) => {
+    api.get<ExpensesResponseProps>('/expenses').then(({ data }) => {
       setExpenses(data.expenses);
       setAmountTotal(data.amountTotal);
       setIsLoading(false);
