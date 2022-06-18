@@ -11,7 +11,11 @@ interface ExpensesProps {
   isHighestAmount: boolean;
 }
 
-interface ExpensesResponseProps {
+interface LastMonthPercentageResponse {
+  lastMonthPercentage: number;
+}
+
+interface ExpensesResponse {
   expenses: ExpensesProps[];
   amountTotal: number;
 }
@@ -23,24 +27,36 @@ interface ChildrenProps {
 interface ContextProps {
   expenses: ExpensesProps[];
   amountTotal: number;
+  lastMonthPercentage: number;
   isLoading: boolean;
 }
 
 export function ExpensesProvider({ children }: ChildrenProps) {
   const [expenses, setExpenses] = useState<ExpensesProps[]>([]);
   const [amountTotal, setAmountTotal] = useState(0);
+  const [lastMonthPercentage, setLastMonthPercentage] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api.get<ExpensesResponseProps>('/expenses').then(({ data }) => {
-      setExpenses(data.expenses);
-      setAmountTotal(data.amountTotal);
+    const expensesRes = api.get<ExpensesResponse>('/expenses');
+    const lastMonthPercentageRes = api.get<LastMonthPercentageResponse>('/last-month-percentage');
+
+    type PromiseRes = [typeof expensesRes, typeof lastMonthPercentageRes];
+    const requests: PromiseRes = [expensesRes, lastMonthPercentageRes];
+
+    Promise.all<PromiseRes>(requests).then(res => {
+      const expensesData = res[0].data;
+      const lastMonthPercentageData = res[1].data;
+
+      setExpenses(expensesData.expenses);
+      setAmountTotal(expensesData.amountTotal);
+      setLastMonthPercentage(lastMonthPercentageData.lastMonthPercentage);
       setIsLoading(false);
     });
   }, []);
 
   return (
-    <ExpensesContext.Provider value={{ expenses, amountTotal, isLoading }}>
+    <ExpensesContext.Provider value={{ expenses, amountTotal, lastMonthPercentage, isLoading }}>
       {children}
     </ExpensesContext.Provider>
   );

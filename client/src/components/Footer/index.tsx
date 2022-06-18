@@ -14,7 +14,7 @@ import { useExpenses } from '../../contexts/ExpensesContext';
 import { formatCurrency } from '../../utils/formatCurrency';
 
 export function Footer() {
-  const { amountTotal, isLoading } = useExpenses();
+  const { amountTotal, lastMonthPercentage, isLoading } = useExpenses();
 
   return (
     <Container>
@@ -25,7 +25,9 @@ export function Footer() {
       </TotalContainer>
 
       <LastMonthContainer>
-        <LastMonthPercentage>+2.4%</LastMonthPercentage>
+        <LastMonthPercentage>
+          {isLoading ? <Loading /> : `+${lastMonthPercentage}%`}
+        </LastMonthPercentage>
 
         <LastMonthTitle>from last month</LastMonthTitle>
       </LastMonthContainer>
