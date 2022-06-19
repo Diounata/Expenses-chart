@@ -9,11 +9,16 @@ export function useBalance() {
   const [balance, setBalance] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
+  const fetchData = async () => {
+    const res = await api.get<BalanceResponse>('/balance');
+    const data = res.data;
+
+    setBalance(data.balance);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
-    api.get<BalanceResponse>('/balance').then(({ data }) => {
-      setBalance(data.balance);
-      setIsLoading(false);
-    });
+    fetchData();
   }, []);
 
   return { balance, isLoading };
