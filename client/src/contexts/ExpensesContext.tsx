@@ -38,21 +38,20 @@ export function ExpensesProvider({ children }: ChildrenProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const expensesRes = api.get<ExpensesResponse>('/expenses');
-    const lastMonthPercentageRes = api.get<LastMonthPercentageResponse>('/last-month-percentage');
+    const fetchData = async () => {
+      const expensesRes = await api.get<ExpensesResponse>('/expenses');
+      const lastMonthPercentageRes = await api.get<LastMonthPercentageResponse>('/last-month-percentage');
 
-    type PromiseRes = [typeof expensesRes, typeof lastMonthPercentageRes];
-    const requests: PromiseRes = [expensesRes, lastMonthPercentageRes];
-
-    Promise.all<PromiseRes>(requests).then(res => {
-      const expensesData = res[0].data;
-      const lastMonthPercentageData = res[1].data;
+      const expensesData = expensesRes.data;
+      const lastMonthPercentageData = lastMonthPercentageRes.data;
 
       setExpenses(expensesData.expenses);
       setTotalAmount(expensesData.totalAmount);
       setLastMonthPercentage(lastMonthPercentageData.lastMonthPercentage);
       setIsLoading(false);
-    });
+    };
+
+    fetchData();
   }, []);
 
   return (
